@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<h1 id="oparl-kurzfassung">OParl Kurzfassung</h1>
+<p>Mit der OParl API kann Daten aus einem RIS mit der eigenen Datenbank synchronisieren. Typische API Funktionen wie Suchen, Sortieren, Filtern und so weiter sind in Version 1.0 noch nicht spezifiziert.</p>
+<p>Das Ausgabeformat ist JSON mit UTF-8 Encoding, https und gzip sind empfohlen. Für den Download von Dokumenten (z.B. PDF oder Word Dateien) ist die Unterstützung von ETags oder If-Modified-Since-Headern empfohlen.</p>
+<p>Der API-Endpunkt gibt eine Liste von System-Objekten aus:</p>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+    <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="ot">[</span>
+        <span class="fu">{</span>
+            <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/system/1&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;http://oparl.org/oparl/spec/v1/System&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;oparlVersion&quot;</span><span class="fu">:</span> <span class="st">&quot;http://oparl.org/oparl/spec/1.0/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;body&quot;</span><span class="fu">:</span> <span class="st">&quot;http://oparl.org/oparl/bodies/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Beispiel-RIS&quot;</span><span class="fu">,</span>
+        <span class="fu">}</span><span class="ot">,</span>
+        <span class="fu">{</span>
+            <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/system/2&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;http://oparl.org/oparl/spec/v2/System&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;oparlVersion&quot;</span><span class="fu">:</span> <span class="st">&quot;http://oparl.org/oparl/spec/2.0/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;body&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/v2/bodies/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Beispiel-RIS&quot;</span><span class="fu">,</span>
+        <span class="fu">}</span>
+    <span class="ot">]</span>
+<span class="fu">}</span></code></pre></div>
+<p>In der Regel enthält ein Server nur ein System-Objekt. Gibt es in Zukunft aber eine mit OParl 1.0 inkompatible OParl Version 2.0, die man parallel zu Version 1.0 anbieten will, kann man das wie im Beispiel mit zwei System-Objekten lösen.</p>
+<p>Der Link in der &quot;body&quot;-Eigenschaft führt zur Liste aller Body-Objekte. Ein Body-Objekt repräsentiert eine Kommune, es können also auch mehrere Kommunen in einem System gespeichert sein.</p>
+<p>Es ist grundsätzlich nicht vorgeschrieben, wie URLs in OParl aussehen müssen. Die URL zu der Liste der Body-Objekten könnte also auch so aussehen:</p>
+<pre><code>http://ris.example.org/oparl_api_v1.php?type=Body</code></pre>
+<p>In einem Body-Objekt gibt es jeweils einen Link zur Listenausgabe für jeden Objekttyp:</p>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+    <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="ot">[</span>
+        <span class="fu">{</span>
+            <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/body/0&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;http://oparl.org/spec/1/Body&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;system&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/system/1&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Beispielkommune&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;organization&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/body/0/organizations/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;person&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/body/0/persons/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;meeting&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/body/0/meetings/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;agendaItem&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/body/0/papers/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;paper&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/body/0/papers/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;file&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/body/0/files/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;consultation&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/body/0/consultation/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;location&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/body/0/location/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;membership&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/body/0/membership/&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;legislativeTerm&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/body/0/legislativeTerm/&quot;</span><span class="fu">,</span>
+        <span class="fu">}</span>
+    <span class="ot">]</span>
+<span class="fu">}</span></code></pre></div>
+<p>Um alle Objekte dieser Kommune zu erhalten, reicht es alle Listenausgaben abzufragen.</p>
+<p>Ein Beispiel für die Listenausgabe der Meetings:</p>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+    <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="ot">[</span>
+        <span class="fu">{</span>
+            <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/meeting/1&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;http://oparl.org/schema/1.0/Meeting&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;1. Sitzung des Finanzausschusses&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;start&quot;</span><span class="fu">:</span> <span class="st">&quot;2013-01-04T18:00:00+01:00&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;end&quot;</span><span class="fu">:</span> <span class="st">&quot;2013-01-04T20:00:00+01:00&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;agendaItem&quot;</span><span class="fu">:</span> <span class="ot">[</span>
+                <span class="st">&quot;https://oparl.example.org/agendaitem/1&quot;</span><span class="ot">,</span>
+                <span class="st">&quot;https://oparl.example.org/agendaitem/2&quot;</span><span class="ot">,</span>
+                <span class="st">&quot;https://oparl.example.org/agendaitem/3&quot;</span><span class="ot">,</span>
+                <span class="st">&quot;https://oparl.example.org/agendaitem/4&quot;</span>
+            <span class="ot">]</span>
+        <span class="fu">}</span><span class="ot">,</span>
+        <span class="fu">{</span>
+            <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/meeting/2&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;http://oparl.org/schema/1.0/Meeting&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;1. Sitzung des Sportausschusses&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;start&quot;</span><span class="fu">:</span> <span class="st">&quot;2013-01-08T18:00:00+01:00&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;end&quot;</span><span class="fu">:</span> <span class="st">&quot;2013-01-08T20:00:00+01:00&quot;</span><span class="fu">,</span>
+            <span class="dt">&quot;agendaItem&quot;</span><span class="fu">:</span> <span class="ot">[</span>
+                <span class="st">&quot;https://oparl.example.org/agendaitem/5&quot;</span><span class="ot">,</span>
+                <span class="st">&quot;https://oparl.example.org/agendaitem/6&quot;</span><span class="ot">,</span>
+                <span class="st">&quot;https://oparl.example.org/agendaitem/7&quot;</span><span class="ot">,</span>
+                <span class="st">&quot;https://oparl.example.org/agendaitem/8&quot;</span><span class="ot">,</span>
+                <span class="st">&quot;https://oparl.example.org/agendaitem/9&quot;</span><span class="ot">,</span>
+                <span class="st">&quot;https://oparl.example.org/agendaitem/10&quot;</span>
+            <span class="ot">]</span>
+        <span class="fu">}</span><span class="ot">,</span>
+        <span class="er">...hier</span> <span class="er">folgen</span> <span class="er">weitere</span> <span class="er">Meeting-Objekte...</span>
+    <span class="ot">]</span><span class="fu">,</span>
+    <span class="dt">&quot;nextPage&quot;</span><span class="fu">:</span> <span class="st">&quot;http://ris.example.org/oparl/meeting?start_id=101&quot;</span>
+<span class="fu">}</span></code></pre></div>
+<p>Es ist empfohlen Paginierung zu verwenden. Falls Objekte gelöscht oder hinzugefügt werden, während ein Client durch die Seiten navigiert, soll verhindert werden, dass durch ein verrutschen der Objekte in der Liste Objekte übersprungen werden. Das lässt sich mit &quot;Cursor Based Pagination&quot; erreichen. Beispiel: wenn die Id des letzten Objekts 100 war, muss auf der nächsten Seite mit Id 101 begonnen werden und nicht mit dem 101. Objekt in der Datenbank-Tabelle, weil sich das zwischenzeitlich verschoben haben könnte.</p>
+<p>Durch die URLs im agendaItem Array kann gespeichert werden, welche Tagesordnungspunkte mit dieser Sitzung verknüpft sind (Fremdschlüssel). Diese URLs sind (aus Performancegründen) nicht zum einzelnen Abfragen gedacht. Stattdessen sollte der Client gleich die Listenausgabe mit allen Tagesordnungspunken abrufen, um viele Objekte mit einem Request zu erhalten.</p>
+<p>Es ist möglich mit einem Parameter nur die Objekte anzeigen zu lassen, die nach einem wählbaren Zeitpunkt erstellt oder geändert wurden. Beispiel:</p>
+<pre><code>http://ris.example.org/oparl/meeting?where=modified:&gt;2015-06-03T18:06:34+02:00</code></pre>
+<p>Das ermöglicht es nur neuere Objekte zu erhalten, falls man ältere nicht braucht. Vor allem soll diese Abfragemöglichkeit aber ermöglichen den Datenbestand zu updaten.</p>
+<p>Weitere Abfragemöglichkeiten gibt es in Version 1.0 noch nicht. Ein OParl Server darf die Funktionalität aber mit eigenen Abfragemöglichkeiten erweitern. Man darf auch eigene Objekteigenschaften hinzufügen, muss sie dann aber mit einem Präfix gefolgt von einem Doppelpunkt versehen. Beispiel:</p>
+<pre><code>&quot;beispiel-ris:faxNumber&quot;: &quot;012345678&quot;</code></pre>
+<h2 id="datenmodell">Datenmodell</h2>
+<p>Hinweise:</p>
+<ul>
+<li>Mit der Maus über eine Eigenschaft fahren um den Beschreibungstext zu lesen.</li>
+<li>Die Objekttypen System, Body, File und Location wurden weggelassen, um das Diagram übersichtlicher zu machen.</li>
+<li>Die bei (fast) jedem Objekt vorhandenen Attribute id, type, created, modified und keyword wurden ebenfalls weggelassen.</li>
+<li>Die blauen Doppelpfeile stellen n:m Beziehung dar.</li>
+</ul>
+<object data="graph.svg">
+</object>
+<div class="tooltip" style="display:none;width:350px;padding:0px 5px;border:1px solid black;font-size:11pt;z-index:9001;background-color:white;position:absolute;">
+
+</div>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+$(window).load(function() {
+    var svg = $("object").get(0).contentDocument;
+
+    $(svg).find("title").remove();
+
+    $(svg).find("a").each(function() {
+        $(this).data("title", $(this).attr("xlink:title"));
+        $(this).removeAttr("xlink:title");
+    });
+
+    var toolTipTimeout = null;
+
+    $(svg).find("a").hover(function() {
+        clearTimeout(toolTipTimeout);
+
+        var text = $(this).data("title");
+        $(".tooltip").html(text).show();
+
+        var x = this.parentNode.parentNode.getBoundingClientRect().left;
+        var y = this.getBoundingClientRect().top;
+        x += $("object").offset().left;
+        y += $("object").offset().top;
+
+        if(x > 800) {
+            x -= 520;
+        }
+
+        $(".tooltip").css({
+            top: y + 5,
+            left: x + 130
+        });
+    }, function() {
+        toolTipTimeout = setTimeout(function() {
+            $(".tooltip").fadeOut(500);
+        }, 2000);
+    });
+
+    $(".tooltip").hover(function() {
+        clearTimeout(toolTipTimeout);
+    }, function() {
+        toolTipTimeout = setTimeout(function() {
+            $(".tooltip").fadeOut(500);
+        }, 2000);
+    });
+});
+</script>
+</body>
+</html>
